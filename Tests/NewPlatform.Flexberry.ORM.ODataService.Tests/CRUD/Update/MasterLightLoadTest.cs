@@ -51,7 +51,7 @@ namespace NewPlatform.Flexberry.ORM.ODataService.Tests.CRUD.Update
                 Котенок котенок = new Котенок { Кошка = кошка1, КличкаКотенка = "Котенок Гав", Глупость = 10 };
                 args.DataService.UpdateObject(котенок);
 
-                // Обновляем ссылку на мастера
+                // Обновляем ссылку на мастера.
                 котенок.Кошка = кошка2;
 
                 // Представление, по которому будем обновлять.
@@ -64,7 +64,7 @@ namespace NewPlatform.Flexberry.ORM.ODataService.Tests.CRUD.Update
                 // Преобразуем объект в JSON-строку.
                 string requestJsonData = котенок.ToJson(котенокDynamicView, args.Token.Model);
 
-                // Добавляем в payload информацию о том, что поменяли ссылку на мастера
+                // Добавляем в payload информацию о том, что поменяли ссылку на мастера.
                 requestJsonData = ODataTestHelper.AddEntryRelationship(requestJsonData, котенокDynamicView, args.Token.Model, кошка2, nameof(Котенок.Кошка));
 
                 // Формируем URL запроса к OData-сервису (с идентификатором изменяемой сущности).
